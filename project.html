@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venom Store - Symbiote Collection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --venom-green: #00ff00;
+            --venom-dark: #0a0a0a;
+            --venom-gray: #1a1a1a;
+            --venom-light: #2a2a2a;
+            --venom-accent: #ff0033;
+            --venom-text: #e0e0e0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: var(--venom-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--venom-dark);
+            border-bottom: 2px solid var(--venom-green);
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--venom-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .logo span {
+            color: var(--venom-accent);
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            background: var(--venom-gray);
+            border: 1px solid var(--venom-green);
+            border-radius: 30px;
+            font-size: 16px;
+            color: var(--venom-text);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--venom-green);
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .user-actions a {
+            color: var(--venom-text);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+
+        .user-actions a:hover {
+            color: var(--venom-green);
+        }
+
+        /* Main Layout - Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        /* Sidebar - Categories */
+        .sidebar {
+            background: var(--venom-gray);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            height: fit-content;
+            border: 1px solid var(--venom-light);
+        }
+
+        .sidebar h3 {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--venom-green);
+            color: var(--venom-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .category-list li {
+            margin-bottom: 12px;
+        }
+
+        .category-list a {
+            text-decoration: none;
+            color: var(--venom-text);
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-list a:hover {
+            background: var(--venom-light);
+            color: var(--venom-green);
+            transform: translateX(5px);
+        }
+
+        .category-list a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Filter Section */
+        .filter-section h3 {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--venom-green);
+            color: var(--venom-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group h4 {
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: var(--venom-text);
+        }
+
+        .price-range {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .price-range span {
+            font-size: 14px;
+            color: var(--venom-green);
+            font-weight: 600;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-options label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        /* Products Section */
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .products-header h2 {
+            color: var(--venom-green);
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sort-options select {
+            padding: 10px 15px;
+            background: var(--venom-gray);
+            border: 1px solid var(--venom-green);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--venom-text);
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Product Card - Flex inside Grid */
+        .product-card {
+            background: var(--venom-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s, box-shadow 0.4s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--venom-light);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 0, 0.2);
+            border-color: var(--venom-green);
+        }
+
+        .product-image {
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.1) 0%, rgba(255, 0, 51, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .venom-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--venom-accent);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 3;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-weight: 700;
+            color: var(--venom-text);
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .product-features {
+            color: #aaa;
+            font-size: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .product-features span {
+            background: var(--venom-light);
+            padding: 4px 8px;
+            border-radius: 5px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--venom-green);
+            font-size: 22px;
+            margin-top: 5px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stars {
+            color: var(--venom-accent);
+        }
+
+        .rating-count {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .add-to-cart {
+            background: linear-gradient(to right, var(--venom-green), #007700);
+            color: var(--venom-dark);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s;
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-to-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.4);
+        }
+
+        .wishlist {
+            background: var(--venom-light);
+            color: var(--venom-text);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wishlist:hover {
+            background: var(--venom-accent);
+            color: white;
+        }
+
+        /* Color variants for different products */
+        .venom-hoodie .venom-img {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: var(--venom-green);
+        }
+
+        .venom-figure .venom-img {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: var(--venom-accent);
+        }
+
+        .venom-mask .venom-img {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            color: var(--venom-green);
+        }
+
+        .venom-poster .venom-img {
+            background: linear-gradient(135deg, #0a0a0a, #2a2a2a);
+            color: var(--venom-accent);
+        }
+
+        .venom-comic .venom-img {
+            background: linear-gradient(135deg, #1a1a1a, #3a3a3a);
+            color: var(--venom-green);
+        }
+
+        .venom-shirt .venom-img {
+            background: linear-gradient(135deg, #2a2a2a, #0a0a0a);
+            color: var(--venom-accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .search-bar {
+                max-width: 100%;
+                margin: 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .card-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--venom-dark);
+            color: var(--venom-text);
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            border-top: 2px solid var(--venom-green);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--venom-green);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--venom-green);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--venom-light);
+            color: #666;
+            font-size: 14px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.8)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a0a0a"/><path d="M0 0L100 100M100 0L0 100" stroke="%2300ff00" stroke-width="1"/></svg>');
+            border-radius: 15px;
+            border: 1px solid var(--venom-green);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--venom-green);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--venom-text);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Venom<span>Store</span></div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for symbiote merchandise...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-actions">
+                    <a href="#"><i class="fas fa-user"></i> Account</a>
+                    <a href="#"><i class="fas fa-heart"></i> Wishlist</a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i> Cart (3)</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>Venom Symbiote Collection</h1>
+            <p>Discover the most terrifying and powerful Venom merchandise. We are Venom!</p>
+        </div>
+        
+        <div class="main-grid">
+            <!-- Sidebar with Categories -->
+            <aside class="sidebar">
+                <h3><i class="fas fa-list"></i> Categories</h3>
+                <ul class="category-list">
+                    <li><a href="#"><i class="fas fa-tshirt"></i> Apparel</a></li>
+                    <li><a href="#"><i class="fas fa-figure"></i> Collectibles</a></li>
+                    <li><a href="#"><i class="fas fa-mask"></i> Masks & Costumes</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Comics & Books</a></li>
+                    <li><a href="#"><i class="fas fa-puzzle-piece"></i> Accessories</a></li>
+                    <li><a href="#"><i class="fas fa-film"></i> Home Media</a></li>
+                </ul>
+                
+                <div class="filter-section">
+                    <h3><i class="fas fa-filter"></i> Filters</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <input type="range" min="0" max="200" value="100" class="slider" style="width: 100%;">
+                        <div class="price-range">
+                            <span>$0</span>
+                            <span>$200</span>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Product Type</h4>
+                        <div class="filter-options">
+                            <label>
+                                <input type="checkbox" id="type1">
+                                Clothing
+                            </label>
+                            <label>
+                                <input type="checkbox" id="type2">
+                                Collectibles
+                            </label>
+                            <label>
+                                <input type="checkbox" id="type3">
+                                Accessories
+                            </label>
+                            <label>
+                                <input type="checkbox" id="type4">
+                                Home Decor
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Rating</h4>
+                        <div class="filter-options">
+                            <label>
+                                <input type="radio" id="rating4" name="rating">
+                                4 Stars & Above
+                            </label>
+                            <label>
+                                <input type="radio" id="rating3" name="rating">
+                                3 Stars & Above
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- Main Content Area -->
+            <main>
+                <div class="products-header">
+                    <h2>Featured Venom Products</h2>
+                    <div class="sort-options">
+                        <select>
+                            <option>Sort by: Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Customer Rating</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Product Grid -->
+                <div class="products-grid">
+                    <!-- Venom Hoodie -->
+                    <div class="product-card venom-hoodie">
+                        <div class="product-image">
+                            <div class="venom-img"><img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQEGcdsF5eC_OaYgHrFAdxfRfhRyH4JInVPJbUPNi18mzXOWIYJJXkh_pneaYB4NFpgU9LTij8MUmh8n96WO60j95oB2cb1umaXps-1bftcJeTAfUkHolWX" alt="" width="300px" height="180px"></div>
+                            <div class="product-badge">Bestseller</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Venom Symbiote Hoodie</div>
+                            <div class="product-features">
+                                <span>Black & Green</span>
+                                <span>Unisex</span>
+                                <span>All Sizes</span>
+                            </div>
+                            <div class="product-price">$49.99</div>
+                            <div class="product-rating">
+                                <div class="stars">★★★★★</div>
+                                <div class="rating-count">(142 reviews)</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist"><i class="fas fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Venom Action Figure -->
+                    <div class="product-card venom-figure">
+                        <div class="product-image">
+                            <div class="venom-img"><img src="data:image/jpeg;base64,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" alt="" width="300px "height="180px"></div>
+                            <div class="product-badge">New</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Venom Deluxe Action Figure</div>
+                            <div class="product-features">
+                                <span>12" Tall</span>
+                                <span>Articulated</span>
+                                <span>Collectible</span>
+                            </div>
+                            <div class="product-price">$34.99</div>
+                            <div class="product-rating">
+                                <div class="stars">★★★★☆</div>
+                                <div class="rating-count">(89 reviews)</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist"><i class="fas fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Venom Mask -->
+                    <div class="product-card venom-mask">
+                        <div class="product-image">
+                            <div class="venom-img">VENOM MASK</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Venom Symbiote Mask</div>
+                            <div class="product-features">
+                                <span>Full Face</span>
+                                <span>Latex Free</span>
+                                <span>One Size</span>
+                            </div>
+                            <div class="product-price">$29.99</div>
+                            <div class="product-rating">
+                                <div class="stars">★★★★★</div>
+                                <div class="rating-count">(67 reviews)</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist"><i class="fas fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Venom Poster -->
+                    <div class="product-card venom-poster">
+                        <div class="product-image">
+                            <div class="venom-img">MOVIE POSTER</div>
+                            <div class="product-badge">Sale</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Venom: Let There Be Carnage Poster</div>
+                            <div class="product-features">
+                                <span>24x36"</span>
+                                <span>High Quality</span>
+                                <span>Framed Option</span>
+                            </div>
+                            <div class="product-price">$19.99 <span style="text-decoration: line-through; color: #aaa; font-size: 16px;">$24.99</span></div>
+                            <div class="product-rating">
+                                <div class="stars">★★★★☆</div>
+                                <div class="rating-count">(53 reviews)</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist"><i class="fas fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Venom Comic -->
+                    <div class="product-card venom-comic">
+                        <div class="product-image">
+                            <div class="venom-img">COMIC BOOK</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Venom #1 - Limited Edition</div>
+                            <div class="product-features">
+                                <span>First Appearance</span>
+                                <span>Collector's Item</span>
+                                <span>Graded</span>
+                            </div>
+                            <div class="product-price">$79.99</div>
+                            <div class="product-rating">
+                                <div class="stars">★★★★★</div>
+                                <div class="rating-count">(31 reviews)</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist"><i class="fas fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Venom T-Shirt -->
+                    <div class="product-card venom-shirt">
+                        <div class="product-image">
+                            <div class="venom-img">T-SHIRT</div>
+                            <div class="product-badge">New</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">Venom Logo T-Shirt</div>
+                            <div class="product-features">
+                                <span>100% Cotton</span>
+                                <span>Multiple Colors</span>
+                                <span>All Sizes</span>
+                            </div>
+                            <div class="product-price">$24.99</div>
+                            <div class="product-rating">
+                                <div class="stars">★★★★☆</div>
+                                <div class="rating-count">(118 reviews)</div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                                <button class="wishlist"><i class="fas fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">Apparel</a></li>
+                        <li><a href="#">Collectibles</a></li>
+                        <li><a href="#">Masks & Costumes</a></li>
+                        <li><a href="#">Comics & Books</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>About VenomStore</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 VenomStore. All rights reserved. "Venom" and related characters are trademarks of Marvel Comics.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

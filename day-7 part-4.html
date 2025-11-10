@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 7 (Part 4: Overflow Property)</title>
+
+    <style>
+        .box {
+            width: 250px;
+            height: 100px;
+            border: 2px solid black;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+
+        .overflow-visible {
+            overflow: visible;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        .overflow-scroll {
+            overflow: scroll;
+        }
+
+        .overflow-auto {
+            overflow: auto;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 7: Overflow Property</h1>
+
+<div class="box overflow-visible">
+    <p>
+        Overflow Visible: Content goes outside the box if it is too large.
+        This text is slightly longer so it will extend.
+    </p>
+</div>
+
+<div class="box overflow-hidden">
+    <p>
+        Overflow Hidden: Extra content will be clipped and will not show.
+        This text is longer than the container, so you will not see the extra part.
+    </p>
+</div>
+
+<div class="box overflow-scroll">
+    <p>
+        Overflow Scroll: Scrollbars will appear always.
+        This text is long and requires scrolling to view completely.
+        Extra content continues beyond the box height for demonstration.
+    </p>
+</div>
+
+<div class="box overflow-auto">
+    <p>
+        Overflow Auto: Scrollbar appears only if content overflows.
+        This text will produce scrollbar only if needed.
+    </p>
+</div>
+
+</body>
+</html>

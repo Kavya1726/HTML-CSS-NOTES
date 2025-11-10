@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 8 (Part 5: align-content & flex-flow)</title>
+
+    <style>
+        .container {
+            display: flex;
+            border: 2px solid black;
+            padding: 10px;
+            width: 350px;
+            height: 200px;
+            margin-bottom: 25px;
+        }
+
+        .box {
+            width: 80px;
+            height: 60px;
+            background-color: lightyellow;
+            border: 2px solid goldenrod;
+            text-align: center;
+            line-height: 60px;
+            font-weight: bold;
+        }
+
+        /* align-content requires multiple rows */
+        .align-start {
+            flex-wrap: wrap;
+            align-content: flex-start;
+        }
+
+        .align-center {
+            flex-wrap: wrap;
+            align-content: center;
+        }
+
+        .align-space-between {
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+
+        /* flex-flow (flex-direction + flex-wrap) */
+        .flow-row-wrap {
+            flex-flow: row wrap;
+        }
+
+        .flow-column-wrap {
+            flex-flow: column wrap;
+            height: 250px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 8: align-content & flex-flow</h1>
+
+<p>align-content: flex-start</p>
+<div class="container align-start">
+    <div class="box">1</div><div class="box">2</div><div class="box">3</div>
+    <div class="box">4</div><div class="box">5</div><div class="box">6</div>
+</div>
+
+<p>align-content: center</p>
+<div class="container align-center">
+    <div class="box">A</div><div class="box">B</div><div class="box">C</div>
+    <div class="box">D</div><div class="box">E</div><div class="box">F</div>
+</div>
+
+<p>align-content: space-between</p>
+<div class="container align-space-between">
+    <div class="box">X</div><div class="box">Y</div><div class="box">Z</div>
+    <div class="box">P</div><div class="box">Q</div><div class="box">R</div>
+</div>
+
+<p>flex-flow: row wrap</p>
+<div class="container flow-row-wrap">
+    <div class="box">R1</div><div class="box">R2</div><div class="box">R3</div>
+    <div class="box">R4</div><div class="box">R5</div><div class="box">R6</div>
+</div>
+
+<p>flex-flow: column wrap</p>
+<div class="container flow-column-wrap">
+    <div class="box">C1</div><div class="box">C2</div><div class="box">C3</div>
+    <div class="box">C4</div><div class="box">C5</div><div class="box">C6</div>
+</div>
+
+</body>
+</html>

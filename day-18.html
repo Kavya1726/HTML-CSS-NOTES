@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 18 (CSS Variables)</title>
+
+    <style>
+        :root {
+            --main-bg: #222;
+            --main-color: white;
+            --btn-bg: crimson;
+            --btn-hover-bg: darkred;
+            --padding-size: 12px;
+            --radius: 8px;
+        }
+
+        body {
+            background: var(--main-bg);
+            color: var(--main-color);
+            font-family: Arial;
+            padding: 30px;
+        }
+
+        h1 {
+            color: var(--btn-bg);
+        }
+
+        .card {
+            background: #333;
+            padding: var(--padding-size);
+            border-radius: var(--radius);
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: var(--padding-size);
+            background: var(--btn-bg);
+            border: none;
+            border-radius: var(--radius);
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--btn-hover-bg);
+        }
+
+    </style>
+</head>
+
+<body>
+x
+<h1>CSS Day 18: CSS Variables</h1>
+
+<div class="card">
+    <p>Using Variables Makes CSS Easier.</p>
+    <button class="btn">Click Me</button>
+</div>
+
+</body>
+</html>

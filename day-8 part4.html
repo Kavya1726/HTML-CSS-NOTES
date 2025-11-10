@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 8 (Part 4: flex-grow, flex-shrink, flex-basis, order)</title>
+
+    <style>
+        .container {
+            display: flex;
+            border: 2px solid black;
+            padding: 10px;
+            margin-bottom: 25px;
+        }
+
+        .box {
+            background-color: lightcoral;
+            border: 2px solid maroon;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        /* flex-grow */
+        .grow .box1 {
+            flex-grow: 2;
+        }
+        .grow .box2 {
+            flex-grow:2;
+        }
+        .grow .box3 {
+            flex-grow: 2;
+        }
+
+        /* flex-shrink */
+        .shrink {
+            width: 300px;
+        }
+        .shrink .box {
+            width: 200px;
+           
+        }
+        .shrink .box2 {
+            flex-shrink: 0; /* this box will not shrink */
+             background-color: purple;
+        }
+
+        /* flex-basis */
+        .basis .box1 {
+            /* flex-basis: 100px; */
+            flex-basis:100px;
+        }
+        .basis .box2 {
+            flex-basis:200px;
+        }
+        .basis .box3 {
+            flex-basis: 150px;
+        }
+
+        /* order */
+        .order .box1 { order: 3; }
+        .order .box2 { order: 1; }
+        .order .box3 { order: 2; }
+        .order .box4 { order: 4; }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 8: flex-grow, flex-shrink, flex-basis, order</h1>
+
+<p>flex-grow Example</p>
+<div class="container grow">
+    <div class="box box1">Grow 1</div>
+    <div class="box box2">Grow 2</div>
+    <div class="box box3">Grow 1</div>
+</div>
+
+<p>flex-shrink Example</p>
+<div class="container shrink">
+    <div class="box">Shrink</div>
+    <div class="box box2">No Shrink</div>
+    <div class="box">Shrink</div>
+</div>
+
+<p>flex-basis Example</p>
+<div class="container basis">
+    <div class="box box1">100px</div>
+    <div class="box box2">200px</div>
+    <div class="box box3">150px</div>
+</div>
+
+<p>order Example</p>
+<div class="container order">
+    <div class="box box1">Box 1 (Order 3)</div>
+    <div class="box box2">Box 2 (Order 1)</div>
+    <div class="box box3">Box 3 (Order 2)</div>
+    <div class="box box4">Box 4 (Order 4)</div>
+</div>
+
+</body>
+</html>

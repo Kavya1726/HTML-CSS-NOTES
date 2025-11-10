@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 11 (Part 2: Position Property)</title>
+
+    <style>
+        .box {
+            width: 120px;
+            height: 120px;
+            background: lightblue;
+            border: 2px solid navy;
+            margin: 20px;
+        }
+
+        /* Static (default) */
+        .static {
+            position: static;
+        }
+
+        /* Relative */
+        .relative {
+            position: relative;
+            left: 40px;
+            top: 20px;
+            background: lightgreen;
+        }
+
+        /* Absolute */
+        .absolute-container {
+            position: relative;
+            border: 2px dashed red;
+            height: 200px;
+            margin: 20px;
+        }
+        .absolute {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            background: lightcoral;
+        }
+
+        /* Fixed */
+        .fixed {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: gold;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 11: Position Property</h1>
+
+<div class="box static">Static</div>
+
+<div class="box relative">Relative</div>
+
+<div class="absolute-container">
+    <div class="box absolute">Absolute</div>
+</div>
+
+<div class="box fixed">Fixed</div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 7 (Position Property)</title>
+
+    <style>
+        /* Static (Default) */
+        .static-box {
+            position: static;
+            background-color: lightgray;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Relative */
+        .relative-box {
+            position: relative;
+            background-color: lightblue;
+            top: 10px;   /* Moves from original position */
+            left: 20px;
+            padding: 10px;
+            margin-bottom: 25px;
+        }
+
+        /* Absolute */
+        .absolute-container {
+            position: relative;
+            background-color: #f5e6c8;
+            height: 150px;
+            margin-bottom: 30px;
+        }
+
+        .absolute-box {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            background-color: orange;
+            padding: 10px;
+        }
+
+        /* Fixed */
+        .fixed-box {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            background-color: lightgreen;
+            padding: 10px;
+        }
+    </style>
+x
+</head>
+<body>
+
+<h1>CSS Day 7: Position Property</h1>
+
+<div class="static-box">Static Position (Default)</div>
+
+<div class="relative-box">Relative Position</div>
+
+<div class="absolute-container">
+    Container (Relative)
+    <div class="absolute-box">Absolute Positioned Box</div>
+</div>
+
+<div class="fixed-box">Fixed Position (Always at Bottom Right)</div>
+
+</body>
+</html>

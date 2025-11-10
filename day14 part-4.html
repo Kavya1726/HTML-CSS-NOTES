@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 14 (Transform: rotate, scale, translate, skew)</title>
+
+    <style>
+        .container {
+            display: flex;
+            gap: 25px;
+            margin: 40px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            background: lightblue;
+            border: 3px solid navy;
+            text-align: center;
+            line-height: 120px;
+            font-weight: bold;
+            transition: 0.5s;
+        }
+
+        /* Rotate */
+        .box1:hover {
+            transform: rotate(45deg);
+        }
+
+        /* Scale */
+        .box2:hover {
+            transform: scale(1.5);
+        }
+
+        /* Translate (Move) */
+        .box3:hover {
+            transform: translate(50px, -30px);
+        }
+
+        /* Skew */
+        .box4:hover {
+            transform: skew(20deg, 10deg);
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 14: Transform Properties</h1>
+
+<div class="container">
+    <div class="box box1">Rotate</div>
+    <div class="box box2">Scale</div>
+    <div class="box box3">Translate</div>
+    <div class="box box4">Skew</div>
+</div>
+
+</body>
+</html>

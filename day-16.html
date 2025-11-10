@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 16 (Pseudo Classes)</title>
+
+    <style>
+        /* Link States */
+        a:link {
+            color: blue;
+        }
+
+        a:visited {
+            color: purple;
+        }
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        a:active {
+            color: green;
+        }
+
+        /* Button Hover */
+        .btn {
+            padding: 12px 25px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .btn:hover {
+            background: orange;
+        }
+
+        /* Input Focus */
+        input:focus {
+            border: 3px solid green;
+            outline: none;
+        }
+
+        /* nth-child */
+        ul li:nth-child(odd) {
+            background: lightblue;
+        }
+
+        ul li:nth-child(even) {
+            background: lightyellow;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 16: Pseudo Classes</h1>
+
+<h3>Link States</h3>
+<a href="#">Click Me</a>
+
+<hr>
+
+<h3>Button Hover</h3>
+<button class="btn">Hover Me</button>
+
+<hr>
+
+<h3>Input Focus</h3>
+<input type="text" placeholder="Click here to Focus">
+
+<hr>
+
+<h3>:nth-child Example</h3>
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+</ul>
+
+</body>
+</html>

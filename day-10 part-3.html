@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 10 (Part 3: justify-self & align-self)</title>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 120px);
+            grid-template-rows: repeat(2, 80px);
+            gap: 10px;
+            border: 2px solid black;
+            padding: 10px;
+            width: 430px;
+        }
+
+        .grid-item {
+            background-color: lightgreen;
+            border: 2px solid darkgreen;
+            font-weight: bold;
+            text-align: center;
+            line-height: 80px;
+        }
+
+        /* Individual Alignment */
+        .item1 { justify-self: start; }   /* left inside the cell */
+        .item2 { justify-self: center; }  /* center horizontally */
+        .item3 { justify-self: end; }     /* right inside the cell */
+
+        .item4 { align-self: start; }     /* top inside the cell */
+        .item5 { align-self: center; }    /* center vertically */
+        .item6 { align-self: end; }       /* bottom inside the cell */
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 10: justify-self & align-self</h1>
+
+<div class="grid-container">
+    <div class="grid-item item1">Start</div>
+    <div class="grid-item item2">Center</div>
+    <div class="grid-item item3">End</div>
+    <div class="grid-item item4">Top</div>
+    <div class="grid-item item5">Middle</div>
+    <div class="grid-item item6">Bottom</div>
+</div>
+
+</body>
+</html>

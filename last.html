@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Day 19: Advanced CSS Variables & Theming</title>
+    <style>
+        :root {
+            /* Color System */
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbc;
+            --accent-color: #ff6b6b;
+            --success-color: #51cf66;
+            --warning-color: #fcc419;
+            --danger-color: #ff6b6b;
+            
+            /* Background Colors */
+            --bg-primary: #f8f9fa;
+            --bg-secondary: #e9ecef;
+            --bg-card: #ffffff;
+            
+            /* Text Colors */
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --text-light: #f8f9fa;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            
+            /* Typography */
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.25rem;
+            --font-size-xl: 1.5rem;
+            --font-size-xxl: 2rem;
+            
+            /* Border & Shadows */
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --shadow: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.1);
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            /* Layout */
+            --container-width: 1200px;
+            --sidebar-width: 250px;
+        }
+
+        /* Dark Theme */
+        .dark-theme {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-card: #2d2d2d;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --shadow: 0 2px 4px rgba(0,0,0,0.3);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* Warm Theme */
+        .warm-theme {
+            --primary-color: #d46b08;
+            --secondary-color: #e6a157;
+            --accent-color: #d46b08;
+            --bg-primary: #fff9db;
+            --bg-secondary: #ffe8cc;
+            --bg-card: #ffffff;
+            --text-primary: #5c3c00;
+            --text-secondary: #8a6d3b;
+        }
+
+        /* Cool Theme */
+        .cool-theme {
+            --primary-color: #0c8599;
+            --secondary-color: #3bc9db;
+            --accent-color: #0c8599;
+            --bg-primary: #f1f3f5;
+            --bg-secondary: #e3f5f9;
+            --bg-card: #ffffff;
+            --text-primary: #18647f;
+            --text-secondary: #5c7c8a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color var(--transition-normal), 
+                        color var(--transition-normal),
+                        border-color var(--transition-normal);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: var(--spacing-xl);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xxl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--bg-secondary);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: var(--font-size-xxl);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h3 {
+            color: var(--text-secondary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .theme-selector {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .theme-btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: none;
+            border-radius: var(--border-radius);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .theme-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .theme-btn.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            box-shadow: var(--shadow);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            display: inline-block;
+            margin-top: var(--spacing-sm);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+        }
+
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: var(--text-primary);
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+        }
+
+        .demo-section {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            box-shadow: var(--shadow);
+        }
+
+        .variable-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .var-item {
+            padding: var(--spacing-md);
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            font-size: var(--font-size-sm);
+        }
+
+        .var-name {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .var-value {
+            color: var(--text-secondary);
+        }
+
+        .dynamic-demo {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .slider-container label {
+            min-width: 120px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+        }
+
+        .dynamic-box {
+            width: 100%;
+            height: 150px;
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: all var(--transition-normal);
+        }
+
+        footer {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--bg-secondary);
+            margin-top: var(--spacing-xxl);
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --spacing-xl: 1rem;
+                --spacing-xxl: 2rem;
+                --font-size-xxl: 1.5rem;
+            }
+            
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--spacing-md);
+            }
+            
+            .theme-selector {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .theme-btn {
+                flex: 1;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>CSS Day 19: Advanced CSS Variables & Theming</h1>
+                <p>Taking CSS custom properties to the next level with dynamic theming and JavaScript integration</p>
+            </div>
+            <div class="theme-selector">
+                <button class="theme-btn active" data-theme="default">Default</button>
+                <button class="theme-btn" data-theme="dark">Dark</button>
+                <button class="theme-btn" data-theme="warm">Warm</button>
+                <button class="theme-btn" data-theme="cool">Cool</button>
+            </div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">1</div>
+                    <h3>Theme Switching</h3>
+                </div>
+                <p>CSS variables make theme switching incredibly simple. Just change the variable values by applying different classes to the document.</p>
+                <button class="btn">Learn More</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">2</div>
+                    <h3>Consistent Design</h3>
+                </div>
+                <p>Using variables ensures consistency across your entire application. Change a value once, and it updates everywhere.</p>
+                <button class="btn btn-secondary">See Examples</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon">3</div>
+                    <h3>Dynamic Updates</h3>
+                </div>
+                <p>CSS variables can be updated with JavaScript, allowing for dynamic theming and real-time customization.</p>
+                <button class="btn btn-accent">Try It</button>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>CSS Variables in Action</h2>
+            <p>Below are the current values of some CSS variables. Try switching themes to see how they change.</p>
+            
+            <div class="variable-display">
+                <div class="var-item">
+                    <div class="var-name">--primary-color</div>
+                    <div class="var-value" id="primary-color-value">#4a6fa5</div>
+                </div>
+                <div class="var-item">
+                    <div class="var-name">--bg-primary</div>
+                    <div class="var-value" id="bg-primary-value">#f8f9fa</div>
+                </div>
+                <div class="var-item">
+                    <div class="var-name">--text-primary</div>
+                    <div class="var-value" id="text-primary-value">#212529</div>
+                </div>
+                <div class="var-item">
+                    <div class="var-name">--border-radius</div>
+                    <div class="var-value" id="border-radius-value">8px</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Dynamic Variable Manipulation</h2>
+            <p>Use the sliders below to adjust CSS variables in real-time with JavaScript.</p>
+            
+            <div class="dynamic-demo">
+                <div class="slider-container">
+                    <label for="primary-hue">Primary Color Hue:</label>
+                    <input type="range" id="primary-hue" min="0" max="360" value="215">
+                    <span id="hue-value">215</span>
+                </div>
+                
+                <div class="slider-container">
+                    <label for="spacing">Spacing Scale:</label>
+                    <input type="range" id="spacing" min="8" max="24" value="16">
+                    <span id="spacing-value">16px</span>
+                </div>
+                
+                <div class="slider-container">
+                    <label for="border-radius">Border Radius:</label>
+                    <input type="range" id="border-radius" min="0" max="20" value="8">
+                    <span id="radius-value">8px</span>
+                </div>
+            </div>
+            
+            <div class="dynamic-box" id="dynamic-box">
+                Dynamic Box
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Button Variants Using CSS Variables</h2>
+            <p>All these buttons share the same base styles but use different CSS variable values.</p>
+            
+            <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap; margin-top: var(--spacing-lg);">
+                <button class="btn">Primary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-accent">Accent</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-warning">Warning</button>
+                <button class="btn btn-danger">Danger</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>CSS Variables are powerful tools for creating maintainable, themable, and dynamic CSS.</p>
+            <p>Next: CSS Day 20 - CSS Grid Advanced Layouts</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme switching functionality
+        document.querySelectorAll('.theme-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.theme-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Get the theme from data attribute
+                const theme = this.getAttribute('data-theme');
+                
+                // Remove all theme classes
+                document.body.classList.remove('dark-theme', 'warm-theme', 'cool-theme');
+                
+                // Add the selected theme class
+                if (theme !== 'default') {
+                    document.body.classList.add(`${theme}-theme`);
+                }
+                
+                // Update variable display
+                updateVariableDisplay();
+            });
+        });
+
+        // Update variable display
+        function updateVariableDisplay() {
+            const computedStyle = getComputedStyle(document.documentElement);
+            
+            document.getElementById('primary-color-value').textContent = 
+                computedStyle.getPropertyValue('--primary-color').trim();
+                
+            document.getElementById('bg-primary-value').textContent = 
+                computedStyle.getPropertyValue('--bg-primary').trim();
+                
+            document.getElementById('text-primary-value').textContent = 
+                computedStyle.getPropertyValue('--text-primary').trim();
+                
+            document.getElementById('border-radius-value').textContent = 
+                computedStyle.getPropertyValue('--border-radius').trim();
+        }
+
+        // Dynamic variable manipulation
+        document.getElementById('primary-hue').addEventListener('input', function() {
+            const hue = this.value;
+            document.getElementById('hue-value').textContent = hue;
+            
+            // Update the primary color using HSL
+            document.documentElement.style.setProperty('--primary-color', `hsl(${hue}, 50%, 50%)`);
+            document.documentElement.style.setProperty('--secondary-color', `hsl(${hue}, 40%, 65%)`);
+            document.documentElement.style.setProperty('--accent-color', `hsl(${hue}, 70%, 60%)`);
+            
+            updateVariableDisplay();
+        });
+
+        document.getElementById('spacing').addEventListener('input', function() {
+            const baseSize = this.value;
+            document.getElementById('spacing-value').textContent = `${baseSize}px`;
+            
+            // Update spacing variables
+            document.documentElement.style.setProperty('--spacing-xs', `${baseSize * 0.25}px`);
+            document.documentElement.style.setProperty('--spacing-sm', `${baseSize * 0.5}px`);
+            document.documentElement.style.setProperty('--spacing-md', `${baseSize}px`);
+            document.documentElement.style.setProperty('--spacing-lg', `${baseSize * 1.5}px`);
+            document.documentElement.style.setProperty('--spacing-xl', `${baseSize * 2}px`);
+            document.documentElement.style.setProperty('--spacing-xxl', `${baseSize * 3}px`);
+        });
+
+        document.getElementById('border-radius').addEventListener('input', function() {
+            const radius = this.value;
+            document.getElementById('radius-value').textContent = `${radius}px`;
+            
+            // Update border radius variables
+            document.documentElement.style.setProperty('--border-radius', `${radius}px`);
+            document.documentElement.style.setProperty('--border-radius-lg', `${radius * 1.5}px`);
+            
+            updateVariableDisplay();
+        });
+
+        // Initialize variable display
+        updateVariableDisplay();
+    </script>
+</body>
+</html>

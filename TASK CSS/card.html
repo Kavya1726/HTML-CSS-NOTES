@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Member Card</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #d40a6f;
+            margin: 0;
+            text-align: center;
+            color: blue;
+        }
+        .container{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:space-around;
+            /* border:5px solid black; */
+            padding: 20px;
+            gap:20px;
+            /* background-color: rgb(247, 23, 7); */
+        }
+        .cardpicture{
+            border:10px solid rgb(12, 12, 12);
+            border-radius:15px;
+            background-color: yellow;
+            box-shadow: 5px 0px 15px rgba(245, 245, 247, 0.3);
+        }
+        .cardpicture:hover{
+            transform: scale(1.05);
+            transition: transform 0.3s;
+            background-color: orange;
+
+        }
+
+        img{
+            display:block;
+            border: 5px solid lightblue;
+            border-radius: 50%;
+            box-shadow: 0px 5px 5px rgba(8, 8, 8, 0.3);
+            margin:10px;
+            width: 200px;
+        }
+        .carddetails{
+            text-align:center;
+            /* background-color: wheat; */
+        }
+        h1{
+            color:antiquewhite;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>Team Member Card</h1>
+     <div class="container">
+        <div class="id">
+            <div class="cardpicture">
+
+            <img src="data:image/png;base64,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" alt="Kavya's Picture" width="200" height="200">
+            <div class="carddetails">
+                <h2>Kavya S</h2>
+                <p>Role: Frontend Developer</p>
+                <p>Email: kavya@example.com</p>
+            </div>
+           </div>
+        </div>   
+
+        <div class="cardpicture">
+            <img src="data:image/png;base64,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" alt="Kavya's Picture" width="200" height="200">
+            <div class="carddetails">
+                <h2>Kavya S</h2>
+                <p>Role: Frontend Developer</p>
+                <p>Email: kavya@example.com</p>
+            </div>
+        </div>
+        <div class="cardpicture">
+            <img src="data:image/png;base64,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" alt="Kavya's Picture" width="200" height="200">
+            <div class="carddetails">
+                <h2>Kavya S</h2>
+                <p>Role: Frontend Developer</p>
+                <p>Email: kavya@example.com</p>
+            </div>
+        </div>
+        <div class="cardpicture">
+            <img src="data:image/png;base64,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" alt="Kavya's Picture" width="200" height="200">
+            <div class="carddetails">
+                <h2>Kavya S</h2>
+                <p>Role: Frontend Developer</p>
+                <p>Email: kavya@example.com</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

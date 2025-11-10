@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 17 (Pseudo Elements)</title>
+
+    <style>
+        /* ::before and ::after */
+        .box {
+            position: relative;
+            width: 250px;
+            padding: 20px;
+            border: 2px solid black;
+            margin: 30px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .box::before {
+            content: "Start - ";
+            color: red;
+            font-weight: bold;
+        }
+
+        .box::after {
+            content: " - End";
+            color: blue;
+            font-weight: bold;
+        }
+
+        /* ::first-letter */
+        .para::first-letter {
+            font-size: 40px;
+            color: green;
+            font-weight: bold;
+        }
+
+        /* ::first-line */
+        .para::first-line {
+            background: lightyellow;
+        }
+
+        
+
+    </style>
+
+</head>
+<body>
+
+<h1 class="head">CSS Day 17: Pseudo Elements</h1>
+
+<div class="box">
+    Pseudo Elements Example
+</div>
+
+<p class="para">
+    This is a paragraph demonstrating pseudo elements. When you select text, highlight color changes. 
+    The first letter is styled differently and the first line has a special background.
+</p>
+
+</body>
+</html>

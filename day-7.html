@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 6 (Part 3: Margin vs Padding)</title>
+
+    <style>
+        .parent-box {
+            border: 2px solid black;
+            width: 300px;
+            margin-bottom: 25px;
+        }
+
+        /* Padding Example */
+        .padding-box {
+            background-color: lightyellow;
+            border: 2px solid green;
+            padding: 20px;   /* space inside border */
+        }
+
+        /* Margin Example */
+        .margin-box {
+            background-color: lightpink;
+            border: 2px solid blue;
+            margin: 30px;    /* space outside border */
+            padding: 10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 6: Margin vs Padding</h1>
+
+<div class="parent-box">
+    <div class="padding-box">
+        This box uses Padding (space inside the border)
+    </div>
+</div>
+
+<div class="margin-box">
+    This box uses Margin (space outside the border)
+</div>
+
+</body>
+</html>

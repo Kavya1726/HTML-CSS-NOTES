@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.box {
+  width: 300px;
+  height: 200px;
+  background: green;
+  color: white;
+  text-align: center;
+  line-height: 200px;
+  font-size: 25px;
+}
+
+/* Screen width below 600px means mobile view */
+@media(max-width: 600px){
+  .box {
+    background: blue;
+    font-size: 18px;
+  }
+  .box:hover {
+    background: lightblue;
+    color: black;
+  }
+}
+/* Laptop */
+@media(min-width: 1024px){
+  body { background: lightgray; }
+}
+
+/* Tablet */
+@media(min-width: 768px) and (max-width: 1023px){
+  body { background: lightcoral; }
+}
+
+/* Mobile */
+@media(max-width: 767px){
+  body { background: lightblue; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">Responsive Box</div>
+
+</body>
+</html>

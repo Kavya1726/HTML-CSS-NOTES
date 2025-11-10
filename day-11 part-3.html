@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 11 (Part 3: Position Sticky)</title>
+
+    <style>
+        body {
+            height: 2000px;
+            margin: 0;
+            font-family: Arial;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .menu {
+            background: lightgreen;
+            padding: 15px;
+            font-size: 18px;
+            position: sticky; /* Sticks while scrolling */
+            top: 0; /* Stick to top */
+            border: 2px solid green;
+        }
+
+        .content {
+            padding: 15px;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<header>Position: Sticky Example</header>
+
+<div class="menu">I Stick at the Top When Scrolling</div>
+
+<div class="content">
+    Scroll down to see the sticky effect. <br><br>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br><br>
+    Keep scrolling...
+</div>
+
+</body>
+</html>

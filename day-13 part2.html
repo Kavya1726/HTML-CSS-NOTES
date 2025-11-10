@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 13 (Part 2: Animation Basics)</title>
+
+    <style>
+        .box {
+            width: 120px;
+            height: 120px;
+            background: lightblue;
+            border: 3px solid navy;
+            margin: 50px;
+            animation-name: moveBox;     /* animation name */
+            animation-duration: 3s;       /* time */
+            animation-iteration-count: infinite; /* repeat forever */
+            animation-direction: alternate;  /* forward and reverse */
+        }
+
+        /* Keyframes - Defines the movement or change */
+        @keyframes moveBox {
+            0% {
+                transform: translateX(0);
+                background: lightblue;
+            }
+            50% {
+                transform: translateX(150px);
+                background: lightgreen;
+            }
+            100% {
+                transform: translateX(300px);
+                background: lightcoral;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 13: Animation (Keyframes)</h1>
+
+<div class="box"></div>
+
+</body>
+</html>

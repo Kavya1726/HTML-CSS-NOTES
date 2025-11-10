@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 13 (Part 3: Animation Delay, Timing & Fill-Mode)</title>
+
+    <style>
+        .box {
+            width: 120px;
+            height: 120px;
+            background: lightseagreen;
+            border: 3px solid teal;
+            margin: 50px;
+
+            animation-name: fadeMove;
+            animation-duration: 4s;
+            animation-delay: 2s;              /* animation start delay */
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out; /* speed control */
+            animation-fill-mode: forwards;     /* keeps final styling */
+        }
+
+        @keyframes fadeMove {
+            0% {
+                opacity: 0;
+                transform: translateY(0);
+                background: lightseagreen;
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(120px);
+                background: lightblue;
+            }
+            100% {
+                opacity: 0.5;
+                transform: translateY(240px);
+                background: lightcoral;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 13: Animation Delay, Timing & Fill-Mode</h1>
+
+<div class="box"></div>
+
+</body>
+</html>

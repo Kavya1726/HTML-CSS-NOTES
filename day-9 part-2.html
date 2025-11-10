@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 9 (Part 2: Grid Rows, Row-Gap, Column-Gap)</title>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 120px 120px 120px;
+            grid-template-rows: 80px 80px 80px;
+            column-gap: 20px;
+            row-gap: 15px;
+            border: 2px solid black;
+            padding: 10px;
+            width: 420px;
+        }
+
+        .grid-item {
+            background-color: lightcoral;
+            border: 2px solid darkred;
+            text-align: center;
+            line-height: 80px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 9: Grid Rows, Row-Gap, Column-Gap</h1>
+
+<div class="grid-container">
+    <div class="grid-item">A</div>
+    <div class="grid-item">B</div>
+    <div class="grid-item">C</div>
+    <div class="grid-item">D</div>
+    <div class="grid-item">E</div>
+    <div class="grid-item">F</div>
+</div>
+
+</body>
+</html>

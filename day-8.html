@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 8 (Flexbox Basics)</title>
+
+    <style>
+        .container {
+            display: flex;           /* activates flexbox */
+            border: 2px solid black;
+            padding: 10px;
+            height: 200px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            border: 2px solid navy;
+            margin: 10px;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+        }
+
+        /* Direction */
+        .row {
+            flex-direction: row;
+        }
+
+        .column {
+            flex-direction: column;
+        }
+
+        /* Alignment */
+        .center-items {
+            justify-content: center;   /* horizontal alignment */
+            align-items: center;       /* vertical alignment */
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 8: Flexbox Basics</h1>
+
+<p>Flex Direction: Row (Default)</p>
+<div class="container row">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+</div>
+
+<p>Flex Direction: Column</p>
+<div class="container column">
+    <div class="box">A</div>
+    <div class="box">B</div>
+    <!-- <div class="box">C</div> -->
+</div>
+
+<p>Center Items</p>
+<div class="container center-items">
+    <div class="box">Center</div>
+</div>
+
+</body>
+</html>

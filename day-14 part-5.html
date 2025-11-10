@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 14 (Part 2: Linear & Radial Gradients)</title>
+
+    <style>
+        .container {
+            display: flex;
+            gap: 25px;
+            margin: 40px;
+        }
+
+        .box {
+            width: 180px;
+            height: 120px;
+            border: 3px solid black;
+        }
+
+        /* Linear Gradient */
+        .linear {
+            background: linear-gradient(to right, red, yellow, green);
+        }
+
+        /* Diagonal Gradient */
+        .diagonal {
+            background: linear-gradient(45deg, blue, violet);
+        }
+
+        /* Radial Gradient */
+        .radial {
+            background: radial-gradient(circle, orange, brown);
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 14: Gradient Backgrounds</h1>
+
+<div class="container">
+    <div class="box linear"></div>
+    <div class="box diagonal"></div>
+    <div class="box radial"></div>
+</div>
+
+</body>
+</html>

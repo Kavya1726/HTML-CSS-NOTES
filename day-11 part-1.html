@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 11 (Flex + Grid Combined Layout)</title>
+
+    <style>
+
+        /* Header */
+        header {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Navigation using Flex */
+        nav {
+            display: flex;
+            background: #555;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background: #222;
+        }
+
+        /* Main Grid Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .sidebar1 {
+            background: lightcoral;
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .content {
+            background: lightyellow;
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .sidebar2 {
+            background: lightblue;
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header>My Website Layout</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Courses</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+
+<div class="container">
+    <div class="sidebar1">Left Sidebar</div>
+    <div class="content">Main Content Area</div>
+    <div class="sidebar2">Right Sidebar</div>
+</div>
+
+<footer>Footer Section</footer>
+
+</body>
+</html>

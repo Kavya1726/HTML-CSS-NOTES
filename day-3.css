@@ -1,0 +1,23 @@
+/* Display Property */
+.inline-box {
+    display: inline;
+    background-color: lightgreen;
+    padding: 5px;
+}
+
+.block-box {
+    display: block;
+    background-color: lightcoral;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* Width & Height */
+.fixed-size {
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 100px;
+}

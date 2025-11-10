@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 1</title>
+
+    <!-- 1. Internal CSS -->
+    <style>
+        /* Selector Example */
+        h1 {
+            color: blue;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            color: brown;
+        }
+
+        /* Class Selector */
+        .highlight {
+            background-color: yellow;
+            padding: 5px;
+        }
+
+        /* ID Selector */
+        #special {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+
+    <!-- 2. External CSS -->
+    <link rel="stylesheet" href="day-1.html">
+</head>
+<body>
+
+    <!-- 3. Inline CSS -->
+    <h1 style="color:red;">Inline CSS Title</h1>
+
+    <h1>Internal CSS Applied Here</h1>
+    <p>This is a normal paragraph styled using internal CSS.</p>
+
+    <p class="highlight">This paragraph uses a class selector.</p>
+
+    <p id="special">This paragraph uses an ID selector.</p>
+
+</body>
+</html>

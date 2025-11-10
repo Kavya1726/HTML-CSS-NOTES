@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 13 (Part 4: Animation Shorthand)</title>
+
+    <style>
+
+        /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+
+        .box {
+            width: 140px;
+            height: 140px;
+            background: orange;
+            border: 3px solid brown;
+            margin: 60px;
+
+            /* FULL SHORTHAND */
+            animation: bounce 2s ease-in-out 1s infinite alternate forwards;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+                background: orange;
+            }
+            50% {
+                transform: translateY(-120px);
+                background: gold;
+            }
+            100% {
+                transform: translateY(0);
+                background: tomato;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 13: Animation Shorthand</h1>
+
+<div class="box"></div>
+
+</body>
+</html>

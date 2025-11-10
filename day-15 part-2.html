@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Filter Effects Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .filter-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .img-box {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .filter-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .filter-name {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .filter-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        /* Filter Effects */
+        .blur:hover img {
+            filter: blur(5px);
+        }
+
+        .grayscale:hover img {
+            filter: grayscale(100%);
+        }
+
+        .brightness:hover img {
+            filter: brightness(0.4);
+        }
+
+        .contrast:hover img {
+            filter: contrast(200%);
+        }
+
+        .hue-rotate:hover img {
+            filter: hue-rotate(90deg);
+        }
+
+        .saturate:hover img {
+            filter: saturate(200%);
+        }
+
+        .sepia:hover img {
+            filter: sepia(100%);
+        }
+
+        .invert:hover img {
+            filter: invert(100%);
+        }
+
+        .drop-shadow:hover img {
+            filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.7));
+        }
+
+        .multiple:hover img {
+            filter: contrast(150%) brightness(120%) saturate(150%) hue-rotate(45deg);
+        }
+
+        .explanation {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .explanation h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .explanation p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .code-example {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .filter-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS Filter Effects</h1>
+            <p class="subtitle">Explore the power of CSS filters to create stunning visual effects on images without using any image editing software. Hover over each image to see the filter in action.</p>
+        </header>
+
+        <div class="filter-grid">
+            <div class="filter-card blur">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Blur</h3>
+                    <p class="filter-desc">Applies a Gaussian blur to the image. The value defines the radius of the blur.</p>
+                </div>
+            </div>
+
+            <div class="filter-card grayscale">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Grayscale</h3>
+                    <p class="filter-desc">Converts the image to grayscale. 0% is original, 100% is completely grayscale.</p>
+                </div>
+            </div>
+
+            <div class="filter-card brightness">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Brightness</h3>
+                    <p class="filter-desc">Adjusts the brightness of the image. 0% is completely black, 100% is normal.</p>
+                </div>
+            </div>
+
+            <div class="filter-card contrast">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Contrast</h3>
+                    <p class="filter-desc">Adjusts the contrast of the image. 0% is completely gray, 100% is normal.</p>
+                </div>
+            </div>
+
+            <div class="filter-card hue-rotate">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Hue Rotate</h3>
+                    <p class="filter-desc">Applies a hue rotation. The angle defines the number of degrees around the color circle.</p>
+                </div>
+            </div>
+
+            <div class="filter-card saturate">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Saturate</h3>
+                    <p class="filter-desc">Adjusts the saturation of the image. 0% is completely desaturated, 100% is normal.</p>
+                </div>
+            </div>
+
+            <div class="filter-card sepia">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Sepia</h3>
+                    <p class="filter-desc">Converts the image to sepia. 0% is normal, 100% is completely sepia.</p>
+                </div>
+            </div>
+
+            <div class="filter-card invert">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Invert</h3>
+                    <p class="filter-desc">Inverts the colors in the image. 0% is normal, 100% is completely inverted.</p>
+                </div>
+            </div>
+
+            <div class="filter-card drop-shadow">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Drop Shadow</h3>
+                    <p class="filter-desc">Applies a drop shadow effect to the image with specified offset, blur, and color.</p>
+                </div>
+            </div>
+
+            <div class="filter-card multiple">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain landscape">
+                </div>
+                <div class="filter-info">
+                    <h3 class="filter-name">Multiple Filters</h3>
+                    <p class="filter-desc">Combine multiple filters to create unique effects. This example uses contrast, brightness, saturation, and hue-rotate.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h2>How CSS Filters Work</h2>
+            <p>CSS filters allow you to apply graphical effects like blurring, color shifting, and contrast adjustment directly in the browser. These effects are applied to elements before they are displayed.</p>
+            
+            <p>The <code>filter</code> property accepts one or more filter functions, which are applied in the order provided. You can combine multiple filters to create complex effects.</p>
+            
+            <div class="code-example">
+                /* Basic filter syntax */<br>
+                .element {<br>
+                &nbsp;&nbsp;filter: filter-function(value);<br>
+                }<br><br>
+                
+                /* Multiple filters */<br>
+                .element {<br>
+                &nbsp;&nbsp;filter: blur(2px) brightness(150%) contrast(120%);<br>
+                }
+            </div>
+            
+            <p>Filters are supported in all modern browsers, though some older browsers may require vendor prefixes. They work on images, backgrounds, and any HTML element.</p>
+            
+            <p>CSS filters are performance-friendly as they are hardware-accelerated in most browsers, making them a great alternative to image editing for simple effects.</p>
+        </div>
+
+        <footer>
+            <p>CSS Filter Effects Showcase &copy; 2023 | Created for educational purposes</p>
+        </footer>
+    </div>
+</body>
+</html>

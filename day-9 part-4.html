@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Day 9 (Part 4: grid-column & grid-row)</title>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 120px 120px 120px;
+            grid-template-rows: 80px 80px 80px;
+            gap: 10px;
+            border: 2px solid black;
+            padding: 10px;
+            width: 400px;
+        }
+
+        .item1 {
+            background: lightblue;
+            border: 2px solid navy;
+            grid-column: 1 / 4; /* spans across 3 columns */
+            text-align: center;
+            line-height: 80px;
+            font-weight: bold;
+        }
+
+        .item2 {
+            background: lightgreen;
+            border: 2px solid darkgreen;
+            grid-row: 2 / 4; /* spans down 2 rows */
+            text-align: center;
+            line-height: 160px; /* double height */
+            font-weight: bold;
+        }
+
+        .item3 {
+            background: lightcoral;
+            border: 2px solid maroon;
+            text-align: center;
+            line-height: 80px;
+            font-weight: bold;
+        }
+
+        .item4 {
+            background: lightgoldenrodyellow;
+            border: 2px solid goldenrod;
+            text-align: center;
+            line-height: 80px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1>CSS Day 9: grid-column & grid-row</h1>
+
+<div class="grid-container">
+    <div class="item1">Header</div>
+    <div class="item2">Side</div>
+    <div class="item3">Box 1</div>
+    <div class="item4">Box 2</div>
+</div>
+
+</body>
+</html>
